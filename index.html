@@ -28,9 +28,10 @@
         }
         
         .container {
+            width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 15px;
         }
         
         /* Header */
@@ -50,12 +51,13 @@
         .profile-section {
             display: flex;
             align-items: center;
-            gap: 30px;
+            gap: 20px;
+            width: 100%;
         }
         
         .profile-img {
-            width: 150px;
-            height: 150px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             border: 5px solid white;
             object-fit: cover;
@@ -63,17 +65,18 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 50px;
+            font-size: 40px;
             color: var(--dark-color);
+            flex-shrink: 0;
         }
         
         .profile-info h1 {
-            font-size: 2.5rem;
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
             margin-bottom: 10px;
         }
         
         .profile-info p {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 3vw, 1.2rem);
             margin-bottom: 15px;
         }
         
@@ -85,26 +88,43 @@
             display: flex;
             align-items: center;
             margin-bottom: 8px;
+            font-size: clamp(0.85rem, 2vw, 1rem);
         }
         
         .contact-item i {
             margin-right: 10px;
             color: var(--light-color);
+            width: 16px;
         }
         
         .contact-item a {
             color: white;
             text-decoration: none;
+            word-break: break-word;
         }
         
         .contact-item a:hover {
             text-decoration: underline;
         }
         
+        /* Mobile Navigation */
+        .mobile-nav-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
         /* Navigation */
         nav {
             background-color: var(--dark-color);
-            padding: 15px 0;
+            padding: 0;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -114,27 +134,31 @@
             display: flex;
             justify-content: center;
             list-style: none;
+            flex-wrap: wrap;
         }
         
         nav ul li {
-            margin: 0 15px;
+            margin: 0;
         }
         
         nav ul li a {
             color: white;
             text-decoration: none;
             font-weight: 500;
-            font-size: 1.1rem;
-            transition: color 0.3s;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            display: block;
+            padding: 15px 10px;
         }
         
         nav ul li a:hover {
             color: var(--secondary-color);
+            background-color: rgba(255,255,255,0.1);
         }
         
         /* Sections */
         section {
-            padding: 60px 0;
+            padding: 50px 0;
         }
         
         .section-title {
@@ -144,7 +168,7 @@
         }
         
         .section-title h2 {
-            font-size: 2rem;
+            font-size: clamp(1.5rem, 4vw, 2rem);
             color: var(--primary-color);
             display: inline-block;
             padding-bottom: 10px;
@@ -169,13 +193,17 @@
         }
         
         .about-text {
-            flex: 1;
-            min-width: 300px;
+            flex: 1 1 100%;
+            min-width: 250px;
+        }
+        
+        .about-text p {
+            margin-bottom: 15px;
         }
         
         .skills {
-            flex: 1;
-            min-width: 300px;
+            flex: 1 1 100%;
+            min-width: 250px;
         }
         
         .skill-category {
@@ -187,6 +215,7 @@
             margin-bottom: 15px;
             border-bottom: 2px solid var(--light-color);
             padding-bottom: 5px;
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
         }
         
         .skill-tags {
@@ -201,6 +230,8 @@
             padding: 5px 15px;
             border-radius: 20px;
             font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 5px;
         }
         
         /* Experience Section */
@@ -217,48 +248,33 @@
             background-color: var(--light-color);
             top: 0;
             bottom: 0;
-            left: 50%;
-            margin-left: -3px;
+            left: 18px;
+            margin-left: 0;
         }
         
         .timeline-item {
-            padding: 10px 40px;
+            padding: 10px 40px 10px 60px;
             position: relative;
-            width: 50%;
+            width: 100%;
             box-sizing: border-box;
-        }
-        
-        .timeline-item:nth-child(odd) {
-            left: 0;
-        }
-        
-        .timeline-item:nth-child(even) {
-            left: 50%;
+            margin-bottom: 20px;
         }
         
         .timeline-item::after {
             content: '';
             position: absolute;
-            width: 25px;
-            height: 25px;
+            width: 20px;
+            height: 20px;
             background-color: white;
             border: 4px solid var(--secondary-color);
             border-radius: 50%;
             z-index: 1;
-        }
-        
-        .timeline-item:nth-child(odd)::after {
-            right: -17px;
-            top: 15px;
-        }
-        
-        .timeline-item:nth-child(even)::after {
-            left: -17px;
+            left: 10px;
             top: 15px;
         }
         
         .timeline-content {
-            padding: 20px 30px;
+            padding: 15px 20px;
             background-color: white;
             position: relative;
             border-radius: 6px;
@@ -269,11 +285,12 @@
             font-weight: bold;
             color: var(--secondary-color);
             margin-bottom: 10px;
+            font-size: 0.9rem;
         }
         
         .timeline-role {
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--primary-color);
             margin-bottom: 5px;
         }
@@ -282,17 +299,19 @@
             font-style: italic;
             margin-bottom: 15px;
             color: #666;
+            font-size: 0.95rem;
         }
         
         .timeline-description p {
             margin-bottom: 10px;
+            font-size: 0.95rem;
         }
         
         /* Projects Section */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
         }
         
         .project-card {
@@ -308,13 +327,13 @@
         }
         
         .project-img {
-            height: 200px;
-            background-color: #ddd;
+            height: 150px;
+            background-color: var(--primary-color);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 50px;
-            color: var(--dark-color);
+            font-size: 40px;
+            color: white;
         }
         
         .project-info {
@@ -324,13 +343,18 @@
         .project-info h3 {
             color: var(--primary-color);
             margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .project-info p {
+            font-size: 0.95rem;
+            margin-bottom: 15px;
         }
         
         .project-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 5px;
-            margin-top: 15px;
         }
         
         .project-tag {
@@ -339,13 +363,14 @@
             padding: 3px 10px;
             border-radius: 15px;
             font-size: 0.8rem;
+            margin-bottom: 5px;
         }
         
         /* Education Section */
         .education-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
         }
         
         .education-card {
@@ -354,10 +379,11 @@
             overflow: hidden;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             padding: 20px;
+            height: 100%;
         }
         
         .education-icon {
-            font-size: 40px;
+            font-size: 36px;
             color: var(--secondary-color);
             margin-bottom: 15px;
             text-align: center;
@@ -367,12 +393,14 @@
             color: var(--primary-color);
             margin-bottom: 10px;
             text-align: center;
+            font-size: 1.1rem;
         }
         
         .education-info p {
             text-align: center;
             color: #666;
             margin-bottom: 10px;
+            font-size: 0.95rem;
         }
         
         /* Awards Section */
@@ -385,27 +413,33 @@
             align-items: flex-start;
             margin-bottom: 20px;
             background-color: white;
-            padding: 20px;
+            padding: 15px;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         
         .award-icon {
-            font-size: 30px;
+            font-size: 28px;
             color: var(--accent-color);
-            margin-right: 20px;
+            margin-right: 15px;
+            flex-shrink: 0;
         }
         
         .award-info h3 {
             color: var(--primary-color);
             margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        
+        .award-info p {
+            font-size: 0.95rem;
         }
         
         /* Contact Section */
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
         }
         
         .contact-card {
@@ -415,10 +449,11 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             padding: 20px;
             text-align: center;
+            height: 100%;
         }
         
         .contact-card-icon {
-            font-size: 40px;
+            font-size: 36px;
             color: var(--secondary-color);
             margin-bottom: 15px;
         }
@@ -426,11 +461,14 @@
         .contact-card h3 {
             color: var(--primary-color);
             margin-bottom: 10px;
+            font-size: 1.1rem;
         }
         
         .contact-card a {
             color: var(--secondary-color);
             text-decoration: none;
+            word-break: break-word;
+            font-size: 0.95rem;
         }
         
         .contact-card a:hover {
@@ -454,6 +492,7 @@
             font-size: 24px;
             margin: 0 10px;
             transition: color 0.3s;
+            display: inline-block;
         }
         
         .social-links a:hover {
@@ -466,44 +505,124 @@
         }
         
         /* Responsive */
-        @media (max-width: 992px) {
+        @media (min-width: 768px) {
+            .about-text, .skills {
+                flex: 1 1 45%;
+            }
+            
             .timeline::after {
-                left: 31px;
+                left: 50%;
+                margin-left: -3px;
             }
             
             .timeline-item {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
+                width: 50%;
+                padding: 10px 40px;
             }
             
-            .timeline-item:nth-child(even) {
+            .timeline-item:nth-child(odd) {
                 left: 0;
             }
             
-            .timeline-item:nth-child(odd)::after,
+            .timeline-item:nth-child(even) {
+                left: 50%;
+            }
+            
+            .timeline-item:nth-child(odd)::after {
+                right: -17px;
+                left: auto;
+                top: 15px;
+            }
+            
             .timeline-item:nth-child(even)::after {
-                left: 18px;
+                left: -17px;
+                top: 15px;
             }
         }
         
-        @media (max-width: 768px) {
-            .header-content {
+        @media (max-width: 767px) {
+            .profile-section {
                 flex-direction: column;
                 text-align: center;
             }
             
-            .profile-section {
-                flex-direction: column;
+            .contact-item {
+                justify-content: center;
+            }
+            
+            nav {
+                position: relative;
+            }
+            
+            .mobile-nav-toggle {
+                display: block;
             }
             
             nav ul {
                 flex-direction: column;
-                align-items: center;
+                background-color: var(--dark-color);
+                width: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                padding: 15px 0;
+                transform: translateY(-100%);
+                transition: transform 0.3s ease-in-out;
+                z-index: 99;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+            }
+            
+            nav ul.active {
+                transform: translateY(0);
             }
             
             nav ul li {
-                margin: 10px 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            nav ul li a {
+                padding: 12px;
+                width: 100%;
+            }
+            
+            .project-img {
+                height: 120px;
+            }
+            
+            .award-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .award-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            section {
+                padding: 40px 0;
+            }
+            
+            .profile-img {
+                width: 100px;
+                height: 100px;
+                font-size: 36px;
+            }
+            
+            .timeline-item {
+                padding-left: 50px;
+            }
+            
+            .timeline-content {
+                padding: 12px 15px;
+            }
+            
+            .education-grid, .contact-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -543,9 +662,12 @@
     </header>
     
     <!-- Navigation -->
+    <button class="mobile-nav-toggle" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+    </button>
     <nav>
         <div class="container">
-            <ul>
+            <ul id="nav-menu">
                 <li><a href="#about">About</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
@@ -564,9 +686,10 @@
             </div>
             <div class="about-content">
                 <div class="about-text">
-                    <p>Over 13+ years of experience in Information Technology spanning design, development, testing, and implementation of mobile technology-based enterprise applications. Full project life cycle implementation experience.</p>
-                    <p>Energetic and curiosity-driven Android Developer with 8+ years of experience writing top-quality clean code for high-paced businesses. Expertise in Native Android application development with experience in all stages of development for dynamic applications.</p>
-                    <p>Well-versed in numerous programming languages including HTML5, Angular TypeScript, JavaScript, CSS, Java OOP, Kotlin, FCM, and GraphQL. Strong background in app development with a focus on user-friendly interfaces.</p>
+                    <p>Seasoned IT professional with 13+ years of experience in designing, developing, testing, and implementing mobile technology-driven enterprise applications. Adept at full project life cycle implementation, delivering high-performance solutions for dynamic business needs.
+					<p>Passionate and results-driven Android Developer, Tech Lead, and Team Manager with 8+ years of expertise in crafting clean, efficient, and scalable code. Experienced in leading development teams, managing tasks, and driving project execution from concept to deployment. Skilled in team leadership, task management, mentoring, and strategic planning to ensure timely and high-quality software delivery.</p>
+					<p>Proficient in Native Android application development across all stages of the software development lifecycle. Strong technical expertise in multiple programming languages, including HTML5, Angular Typescripts, JavaScript, CSS, Java (OOP), Kotlin , Flutter  FCM, and GraphQL. Committed to building user-friendly, intuitive, and high-performance applications that enhance user experience and business efficiency.</p>
+</p>
                 </div>
                 <div class="skills">
                     <div class="skill-category">
@@ -684,6 +807,11 @@
             </div>
         </div>
     </section>
+	
+	   <div class="slider-container">
+        <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
+        <p>Value: <span id="sliderValue">50</span></p>
+    </div>
     
     <!-- Projects Section -->
     <section id="projects">
@@ -695,29 +823,163 @@
                 <div class="project-card">
                     <div class="project-img"><i class="fas fa-hand-holding-medical"></i></div>
                     <div class="project-info">
-                        <h3>Care Health</h3>
-                        <p>Comprehensive healthcare application providing access to cashless treatment at 24,800+ network hospitals with features for health insurance plan management.</p>
+                        <h3>Care Health - Customer App</h3>
+                        <p>Care Health Insurance (CHI) is a specialized Health Insurer offering health insurance services to employees of corporates, individual customers and for financial inclusion as well. With CHI’s operating philosophy being based on the principal tenet of ‘consumer-centricity’, the company has consistently invested in the effective application of technology to deliver excellence in customer servicing, product innovation and value-for-money services.</p>
                         <div class="project-tags">
                             <span class="project-tag">Android</span>
                             <span class="project-tag">iOS</span>
-                            <span class="project-tag">Flutter</span>
-                            <span class="project-tag">Healthcare</span>
+							 <span class="project-tag">Java</span>
+                            <span class="project-tag">Firebase</span>
+                            <span class="project-tag">Insurance</span>
+							<span class="project-tag">Downloads-5,000,000+ downloads</span>
                         </div>
                     </div>
                 </div>
                 <div class="project-card">
                     <div class="project-img"><i class="fas fa-cogs"></i></div>
                     <div class="project-info">
-                        <h3>OneDios</h3>
-                        <p>India's single window to all brands, their warranties and AMCs, simplifying customer service processes for appliance owners.</p>
+                        <h3>Faveo Plus</h3>
+                        <p>This application is for exclusively Care Health Insurance Limited (Formerly known as Religare Health Insurance Company Limited) partners. Get to know about your business figures, commission paid, renewals, proposals and much more features in a seamless manner. Experience the hassle free journey of end to end transaction for policy issuance as well as renewals. Get to know about each product of CHI in more easy and fascinating way. Overall, this app can take your whole journey with CHI in your pocket.</p>
                         <div class="project-tags">
+							<span class="project-tag">Flutter</span>
                             <span class="project-tag">Android</span>
                             <span class="project-tag">iOS</span>
-                            <span class="project-tag">Customer Service</span>
+							 <span class="project-tag">Java</span>
+                            <span class="project-tag">Firebase</span>
+							 <span class="project-tag">Flutter Web</span>
+                            <span class="project-tag">Care Agency </span>
+							<span class="project-tag">100,000+ downloads</span>
                         </div>
                     </div>
                 </div>
                 <div class="project-card">
+                    <div class="project-img"><i class="fas fa-laptop-code"></i></div>
+                    <div class="project-info">
+                        <h3>InstaBiz</h3>
+                        <p>This application is exclusively for Care Health Insurance Limited (Formerly known as Religare Health Insurance Company Limited) employees and its Partner’s employees. CHI employee can issue policy on behalf of his/her partner at any instant whereas Partner’s employees can also issue the policy without any paper work involved. And hence get ready to experience the hassle free journey of end to end transaction for policy issuance. Get to know about each product of CHI in more easy & fascinating way. Overall, this app can take the whole journey of policy issuance in your pocket. Install & Explorethe new technology world of CHI</p>
+                        <div class="project-tags">
+                            	<span class="project-tag">Flutter</span>
+                            <span class="project-tag">Android</span>
+                            <span class="project-tag">iOS</span>
+							 <span class="project-tag">Java</span>
+                            <span class="project-tag">Firebase</span>
+							 <span class="project-tag">Flutter Web</span>
+                            <span class="project-tag">Care banka </span>
+							<span class="project-tag">100,000+ downloads</span>
+                        </div>
+                    </div>
+                </div>
+				<div class="project-card">
+                    <div class="project-img"><i class="fas fa-laptop-code"></i></div>
+                    <div class="project-info">
+                        <h3>Max MyHealth -by Max Hospitals</h3>
+                        <p>Discover a new way to manage your health effortlessly with Max Hospital's Max MyHealth app. Access all the trusted services of Max Healthcare (Max Hospitals, BLK-Max Hospital, Nanavati Max Hospital) in one place—whether it’s booking a consultation, ordering lab tests, accessing medical records, or scheduling home healthcare services.</p>
+                        <div class="project-tags">
+							<span class="project-tag">Flutter</span>
+                            <span class="project-tag">Android</span>
+                            <span class="project-tag">iOS</span>
+							 <span class="project-tag">Flutter Web</span>
+                            <span class="project-tag">Java</span>
+                            <span class="project-tag">Firebase</span>
+							<span class="project-tag">Max Healthcare</span>
+							<span class="project-tag">1,000,000+ downloads</span>
+                        </div>
+                    </div>
+                </div>
+				<div class="project-card">
+                    <div class="project-img"><i class="fas fa-laptop-code"></i></div>
+                    <div class="project-info">
+                        <h3>Max MyHealth Doctor</h3>
+                        <p>Max Healthcare’s new mobile app for its Doctors at Max Hospitals, BLK-Max Hospital and Nanavati Max Hospital, empowers them to manage their consultations (both video and in-hospital) and schedule more effectively..</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Flutter</span>
+                            <span class="project-tag">Android</span>
+                            <span class="project-tag">iOS</span>
+                            <span class="project-tag">Java</span>
+                            <span class="project-tag">Firebase</span>
+							<span class="project-tag">Max Healthcare</span>
+							<span class="project-tag">5,000+ downloads</span>
+                        </div>
+                    </div>
+                </div>
+				<div class="project-card">
+                    <div class="project-img"><i class="fas fa-laptop-code"></i></div>
+                    <div class="project-info">
+                        <h3>Max QMS</h3>
+                        <p>Max QMS provides the platform to streamline processes and achieving operational excellence through the automation of quality workflows and processes. Max QMS's focus is on supporting accreditation and standards requirements, as well as improving operational outcomes..</p>
+                        <div class="project-tags">
+                             <span class="project-tag">Flutter</span>
+                            <span class="project-tag">Android</span>
+                            <span class="project-tag">iOS</span>
+                            <span class="project-tag">Java</span>
+                            <span class="project-tag">Firebase</span>
+							<span class="project-tag">Max Healthcare</span>
+							<span class="project-tag">5,000+ downloads</span>
+                        </div>
+                    </div>
+                </div>
+				<div class="project-card">
+                    <div class="project-img"><i class="fas fa-laptop-code"></i></div>
+                    <div class="project-info">
+                        <h3>OneDios: Services Supermarket</h3>
+                        <p>BOOK A SERVICE One can book a service in 60 seconds using OneDios.Check the status of your service request on the App anytime, anywhere!.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Android</span>
+                            <span class="project-tag">Java</span>
+                            <span class="project-tag">Firebase</span>
+							<span class="project-tag">BOOK A SERVICE 60 seconds</span>
+							<span class="project-tag">100,000+ downloads</span>
+                        </div>
+                    </div>
+                </div>
+				<div class="project-card">
+                    <div class="project-img"><i class="fas fa-laptop-code"></i></div>
+                    <div class="project-info">
+                        <h3>OneDios Business Partner</h3>
+                        <p>Single mobile app to register and manage products which you have bought. OneDios names these products as Digital Products.</p>
+                        <div class="project-tags">
+                             <span class="project-tag">Flutter</span>
+                            <span class="project-tag">Android</span>
+                            <span class="project-tag">iOS</span>
+                            <span class="project-tag">Java</span>
+                            <span class="project-tag">Firebase</span>
+							<span class="project-tag">REQUESTS TO OEM</span>
+							<span class="project-tag">10,000+ downloads</span>
+                        </div>
+                    </div>
+                </div>
+				<div class="project-card">
+                    <div class="project-img"><i class="fas fa-laptop-code"></i></div>
+                    <div class="project-info">
+                        <h3>Pigeon Partner</h3>
+                        <p>Pigeon Partner App: Your Direct Connection to Brand. Easily raise installation and service requests directly to the brand, manage digital bills for hassle-free after-sales service, and receive real-time updates on your service requests. Simplify communication and rate your service experience, all in one convenient mobile app.</p>
+                        <div class="project-tags">
+                              <span class="project-tag">Flutter</span>
+                            <span class="project-tag">Android</span>
+                            <span class="project-tag">iOS</span>
+                            <span class="project-tag">Java</span>
+                            <span class="project-tag">Firebase</span>
+							<span class="project-tag">REQUESTS TO OEM</span>
+							<span class="project-tag">10,000+ downloads</span>
+                        </div>
+                    </div>
+                </div>
+				<div class="project-card">
+                    <div class="project-img"><i class="fas fa-laptop-code"></i></div>
+                    <div class="project-info">
+                        <h3>Inalsa Connect</h3>
+                        <p>Inalsa connect App enables you to quickly log a service complaint for any Inalsa product you may have and monitor its status..</p>
+                        <div class="project-tags">
+                              <span class="project-tag">Flutter</span>
+                            <span class="project-tag">Android</span>
+                            <span class="project-tag">iOS</span>
+                            <span class="project-tag">Java</span>
+                            <span class="project-tag">Firebase</span>
+							<span class="project-tag">Inalsa Customer App</span>
+							<span class="project-tag">10,000+ downloads</span>
+                        </div>
+                    </div>
+                </div><div class="project-card">
                     <div class="project-img"><i class="fas fa-laptop-code"></i></div>
                     <div class="project-info">
                         <h3>HerDUM Syst</h3>
@@ -729,6 +991,21 @@
                         </div>
                     </div>
                 </div>
+				<div class="project-card">
+                    <div class="project-img"><i class="fas fa-laptop-code"></i></div>
+                    <div class="project-info">
+                        <h3>baiMobile</h3>
+                        <p>The baiMobile® Credentials app is a background service that provides support for a variety of smartcard readers from various reader vendors. Credentials is leveraged by those applications that embed the baiMobile® Framework for Credential Services (a set of SDK libraries).</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Android</span>
+                            <span class="project-tag">Java</span>
+                            <span class="project-tag">C++</span>
+                        </div>
+                    </div>
+                </div>
+				
+				
+				
             </div>
         </div>
     </section>
@@ -794,82 +1071,3 @@
                     <div class="award-info">
                         <h3>Best Overall App Android (H2 2017)</h3>
                         <p>Recognition for excellence in Android app development.</p>
-                    </div>
-                </li>
-                <li class="award-item">
-                    <div class="award-icon">
-                        <i class="fas fa-award"></i>
-                    </div>
-                    <div class="award-info">
-                        <h3>Best TP User Debate Competition (3rd Position)</h3>
-                        <p>Recognition for excellence in technical debate.</p>
-                    </div>
-                </li>
-                <li class="award-item">
-                    <div class="award-icon">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
-                    <div class="award-info">
-                        <h3>Most Innovative Feature App: HerDUM Syst</h3>
-                        <p>Recognition for creating innovative features in mobile application.</p>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </section>
-    
-    <!-- Contact Section -->
-    <section id="contact" style="background-color: #f9f9f9;">
-        <div class="container">
-            <div class="section-title">
-                <h2>Contact Me</h2>
-            </div>
-            <div class="contact-grid">
-                <div class="contact-card">
-                    <div class="contact-card-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <h3>Email</h3>
-                    <p><a href="mailto:07nitya@gmail.com">07nitya@gmail.com</a></p>
-                </div>
-                <div class="contact-card">
-                    <div class="contact-card-icon">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <h3>Phone</h3>
-                    <p><a href="tel:+919411294189">+91-9411294189</a></p>
-                </div>
-                <div class="contact-card">
-                    <div class="contact-card-icon">
-                        <i class="fab fa-linkedin"></i>
-                    </div>
-                    <h3>LinkedIn</h3>
-                    <p><a href="https://www.linkedin.com/in/07nitya/" target="_blank">linkedin.com/in/07nitya</a></p>
-                </div>
-                <div class="contact-card">
-                    <div class="contact-card-icon">
-                        <i class="fab fa-github"></i>
-                    </div>
-                    <h3>GitHub</h3>
-                    <p><a href="https://github.com/NityaNandPandey" target="_blank">github.com/NityaNandPandey</a></p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/07nitya/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/NityaNandPandey" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://stackoverflow.com/users/4345743/nitya-nand-pandey" target="_blank"><i class="fab fa-stack-overflow"></i></a>
-                <a href="https://join.skype.com/invite/rtOCphGoVN1R" target="_blank"><i class="fab fa-skype"></i></a>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2025 Nitya Nand Pandey. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
-</body>
-</html>
